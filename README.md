@@ -36,10 +36,32 @@ Update later with:
 - NOT the TypeScript Agent SDK
 - NOT the Anthropic Client SDK (`anthropic` package)
 
+## Repo layout
+
+```
+.claude-plugin/   plugin + marketplace manifests
+commands/         four slash command definitions
+skills/           SKILL.md routing brain + references + checklists + templates
+scripts/          refresh_docs.py (docs snapshot refresher)
+dev/              dev-only artifacts: plans, specs, tests, fixtures
+```
+
+Runtime (`skills/`, `commands/`, `scripts/`, `.claude-plugin/`) is what the plugin loads. Everything under `dev/` is for contributors.
+
 ## Development
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
-pip install -e . claude-agent-sdk markdownify pytest
+pip install -r scripts/requirements.txt claude-agent-sdk pytest pytest-asyncio
 pytest
 ```
+
+Tests live in `dev/tests/` and are discovered via `pyproject.toml`.
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
+
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md).

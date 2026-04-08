@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 TEMPLATE_PATH = (
-    Path(__file__).parent.parent
+    Path(__file__).parent.parent.parent
     / "skills" / "claude-agent-sdk-python" / "templates" / "07_tested_agent.py"
 )
 

@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-TEMPLATES_DIR = Path(__file__).parent.parent / "skills" / "claude-agent-sdk-python" / "templates"
+TEMPLATES_DIR = Path(__file__).parent.parent.parent / "skills" / "claude-agent-sdk-python" / "templates"
 TEMPLATES = sorted(TEMPLATES_DIR.glob("*.py"))
 
 

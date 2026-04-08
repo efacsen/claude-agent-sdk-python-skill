@@ -6,10 +6,10 @@ from pathlib import Path
 
 import pytest
 
-REPO_ROOT = Path(__file__).parent.parent
+REPO_ROOT = Path(__file__).parent.parent.parent
 SCRIPT = REPO_ROOT / "scripts" / "refresh_docs.py"
 REFERENCES_DIR = REPO_ROOT / "skills" / "claude-agent-sdk-python" / "references"
-FIXTURE = REPO_ROOT / "tests" / "fixtures" / "python_docs_snapshot.html"
+FIXTURE = REPO_ROOT / "dev" / "tests" / "fixtures" / "python_docs_snapshot.html"
 
 
 def test_script_exists():
