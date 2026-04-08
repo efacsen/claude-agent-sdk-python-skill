@@ -10,7 +10,7 @@
         "query()",
         "ClaudeSDKClient"
       ],
-      "last_fetched": "2026-04-08T21:21:24.875141+00:00"
+      "last_fetched": "2026-04-08T22:27:41.828227+00:00"
     },
     {
       "file": "02-options.md",
@@ -22,7 +22,7 @@
         "SystemPromptPreset",
         "SettingSource"
       ],
-      "last_fetched": "2026-04-08T21:21:24.875141+00:00"
+      "last_fetched": "2026-04-08T22:27:41.828227+00:00"
     },
     {
       "file": "03-messages.md",
@@ -35,7 +35,7 @@
         "ContentBlock",
         "Message"
       ],
-      "last_fetched": "2026-04-08T21:21:24.875141+00:00"
+      "last_fetched": "2026-04-08T22:27:41.828227+00:00"
     },
     {
       "file": "04-hooks.md",
@@ -53,7 +53,7 @@
         "Hook Usage Example",
         "Using Hooks for Behavior Modification"
       ],
-      "last_fetched": "2026-04-08T21:21:24.875141+00:00"
+      "last_fetched": "2026-04-08T22:27:41.828227+00:00"
     },
     {
       "file": "05-mcp-tools.md",
@@ -66,7 +66,7 @@
         "McpSdkServerConfig",
         "Using custom tools"
       ],
-      "last_fetched": "2026-04-08T21:21:24.875141+00:00"
+      "last_fetched": "2026-04-08T22:27:41.828227+00:00"
     },
     {
       "file": "06-permissions.md",
@@ -80,7 +80,7 @@
         "PermissionRuleValue",
         "Permissions Fallback"
       ],
-      "last_fetched": "2026-04-08T21:21:24.875141+00:00"
+      "last_fetched": "2026-04-08T22:27:41.828227+00:00"
     },
     {
       "file": "07-sessions.md",
@@ -93,7 +93,7 @@
         "tag_session",
         "Building a Continuous Conversation"
       ],
-      "last_fetched": "2026-04-08T21:21:24.875141+00:00"
+      "last_fetched": "2026-04-08T22:27:41.828227+00:00"
     },
     {
       "file": "08-errors.md",
@@ -108,7 +108,7 @@
         "AssistantMessageError",
         "Error handling"
       ],
-      "last_fetched": "2026-04-08T21:21:24.875141+00:00"
+      "last_fetched": "2026-04-08T22:27:41.828227+00:00"
     }
   ]
 }

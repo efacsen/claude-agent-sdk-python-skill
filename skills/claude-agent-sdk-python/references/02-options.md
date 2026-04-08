@@ -1,6 +1,6 @@
 ---
 source_url: https://platform.claude.com/docs/en/agent-sdk/python
-last_fetched: 2026-04-08T21:21:24.875141+00:00
+last_fetched: 2026-04-08T22:27:41.828227+00:00
 topic: 02-options
 ---
 
@@ -61,7 +61,41 @@ class ClaudeAgentOptions:
 | --- | --- | --- | --- |
 | `tools` | `list[str] | ToolsPreset | None` | `None` | Tools configuration. Use `{"type": "preset", "preset": "claude_code"}` for Claude Code's default tools |
 | `allowed_tools` | `list[str]` | `[]` | Tools to auto-approve without prompting. This does not restrict Claude to only these tools; unlisted tools fall through to `permission_mode` and `can_use_tool`. Use `disallowed_tools` to block tools. See [Permissions](/docs/en/agent-sdk/permissions#allow-and-deny-rules) |
-|  |
+| `system_prompt` | `str | SystemPromptPreset | None` | `None` | System prompt configuration. Pass a string for custom prompt, or use `{"type": "preset", "preset": "claude_code"}` for Claude Code's system prompt. Add `"append"` to extend the preset |
+| `mcp_servers` | `dict[str, McpServerConfig] | str | Path` | `{}` | MCP server configurations or path to config file |
+| `permission_mode` | `PermissionMode | None` | `None` | Permission mode for tool usage |
+| `continue_conversation` | `bool` | `False` | Continue the most recent conversation |
+| `resume` | `str | None` | `None` | Session ID to resume |
+| `max_turns` | `int | None` | `None` | Maximum agentic turns (tool-use round trips) |
+| `max_budget_usd` | `float | None` | `None` | Maximum budget in USD for the session |
+| `disallowed_tools` | `list[str]` | `[]` | Tools to always deny. Deny rules are checked first and override `allowed_tools` and `permission_mode` (including `bypassPermissions`) |
+| `enable_file_checkpointing` | `bool` | `False` | Enable file change tracking for rewinding. See [File checkpointing](/docs/en/agent-sdk/file-checkpointing) |
+| `model` | `str | None` | `None` | Claude model to use |
+| `fallback_model` | `str | None` | `None` | Fallback model to use if the primary model fails |
+| `betas` | `list[SdkBeta]` | `[]` | Beta features to enable. See [`SdkBeta`](#sdk-beta) for available options |
+| `output_format` | `dict[str, Any] | None` | `None` | Output format for structured responses (e.g., `{"type": "json_schema", "schema": {...}}`). See [Structured outputs](/docs/en/agent-sdk/structured-outputs) for details |
+| `permission_prompt_tool_name` | `str | None` | `None` | MCP tool name for permission prompts |
+| `cwd` | `str | Path | None` | `None` | Current working directory |
+| `cli_path` | `str | Path | None` | `None` | Custom path to the Claude Code CLI executable |
+| `settings` | `str | None` | `None` | Path to settings file |
+| `add_dirs` | `list[str | Path]` | `[]` | Additional directories Claude can access |
+| `env` | `dict[str, str]` | `{}` | Environment variables |
+| `extra_args` | `dict[str, str | None]` | `{}` | Additional CLI arguments to pass directly to the CLI |
+| `max_buffer_size` | `int | None` | `None` | Maximum bytes when buffering CLI stdout |
+| `debug_stderr` | `Any` | `sys.stderr` | *Deprecated* - File-like object for debug output. Use `stderr` callback instead |
+| `stderr` | `Callable[[str], None] | None` | `None` | Callback function for stderr output from CLI |
+| `can_use_tool` | [`CanUseTool`](#can-use-tool)  `| None` | `None` | Tool permission callback function. See [Permission types](#can-use-tool) for details |
+| `hooks` | `dict[HookEvent, list[HookMatcher]] | None` | `None` | Hook configurations for intercepting events |
+| `user` | `str | None` | `None` | User identifier |
+| `include_partial_messages` | `bool` | `False` | Include partial message streaming events. When enabled, [`StreamEvent`](#stream-event) messages are yielded |
+| `fork_session` | `bool` | `False` | When resuming with `resume`, fork to a new session ID instead of continuing the original session |
+| `agents` | `dict[str, AgentDefinition] | None` | `None` | Programmatically defined subagents |
+| `plugins` | `list[SdkPluginConfig]` | `[]` | Load custom plugins from local paths. See [Plugins](/docs/en/agent-sdk/plugins) for details |
+| `sandbox` | [`SandboxSettings`](#sandbox-settings)  `| None` | `None` | Configure sandbox behavior programmatically. See [Sandbox settings](#sandbox-settings) for details |
+| `setting_sources` | `list[SettingSource] | None` | `None` (no settings) | Control which filesystem settings to load. When omitted, no settings are loaded. **Note:** Must include `"project"` to load CLAUDE.md files |
+| `max_thinking_tokens` | `int | None` | `None` | *Deprecated* - Maximum tokens for thinking blocks. Use `thinking` instead |
+| `thinking` | [`ThinkingConfig`](#thinking-config)  `| None` | `None` | Controls extended thinking behavior. Takes precedence over `max_thinking_tokens` |
+| `effort` | `Literal["low", "medium", "high", "max"] | None` | `None` | Effort level for thinking depth |
 
 ### `OutputFormat`
 
@@ -264,4 +298,5 @@ class AgentDefinition:
 | `tools` | No | Array of allowed tool names. If omitted, inherits all tools |
 | `model` | No | Model override for this agent. If omitted, uses the main model |
 | `skills` | No | List of skill names available to this agent |
-| `memory` | No | Memory source for this agent: , , or |
+| `memory` | No | Memory source for this agent: `"user"`, `"project"`, or `"local"` |
+| `mcpServers` | No | MCP servers available to this agent. Each entry is a server name or an inline `{name: config}` dict |

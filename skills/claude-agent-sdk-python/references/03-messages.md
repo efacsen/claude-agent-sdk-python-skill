@@ -1,6 +1,6 @@
 ---
 source_url: https://platform.claude.com/docs/en/agent-sdk/python
-last_fetched: 2026-04-08T21:21:24.875141+00:00
+last_fetched: 2026-04-08T22:27:41.828227+00:00
 topic: 03-messages
 ---
 
@@ -32,7 +32,7 @@ def get_session_messages(
 | `session_id` | `str` | required | The session ID to retrieve messages for |
 | `directory` | `str | None` | `None` | Project directory to look in. When omitted, searches all projects |
 | `limit` | `int | None` | `None` | Maximum number of messages to return |
-| `offset` |  |
+| `offset` | `int` | `0` | Number of messages to skip from the start |
 
 
 #### Return type: `SessionMessage`
@@ -46,7 +46,7 @@ def get_session_messages(
 | `uuid` | `str` | Unique message identifier |
 | `session_id` | `str` | Session identifier |
 | `message` | `Any` | Raw message content |
-| `parent_tool_use_id` | `None` |
+| `parent_tool_use_id` | `None` | Reserved for future use |
 
 
 #### Example
@@ -134,7 +134,8 @@ class AssistantMessage:
 | `model` | `str` | Model that generated the response |
 | `parent_tool_use_id` | `str | None` | Tool use ID if this is a nested response |
 | `error` | [`AssistantMessageError`](#assistant-message-error)  `| None` | Error type if the response encountered an error |
-| `usage` |
+| `usage` | `dict[str, Any] | None` | Per-message token usage (same keys as [`ResultMessage.usage`](#result-message)) |
+| `message_id` | `str | None` | API message ID. Multiple messages from one turn share the same ID |
 
 ### `AssistantMessageError`
 
@@ -217,7 +218,10 @@ The `model_usage` dict maps model names to per-model usage. The inner dict keys 
 | `outputTokens` | `int` | Output tokens for this model. |
 | `cacheReadInputTokens` | `int` | Cache read tokens for this model. |
 | `cacheCreationInputTokens` | `int` | Cache creation tokens for this model. |
-| `webSearchRequests` | `int` |
+| `webSearchRequests` | `int` | Web search requests made by this model. |
+| `costUSD` | `float` | Cost in USD for this model. |
+| `contextWindow` | `int` | Context window size for this model. |
+| `maxOutputTokens` | `int` | Maximum output token limit for this model. |
 
 ### `StreamEvent`
 
@@ -301,7 +305,10 @@ class RateLimitInfo:
 | `resets_at` | `int | None` | Unix timestamp when the rate limit window resets |
 | `rate_limit_type` | `RateLimitType | None` | Which rate limit window applies |
 | `utilization` | `float | None` | Fraction of the rate limit consumed (0.0 to 1.0) |
-|
+| `overage_status` | `RateLimitStatus | None` | Status of pay-as-you-go overage usage, if applicable |
+| `overage_resets_at` | `int | None` | Unix timestamp when the overage window resets |
+| `overage_disabled_reason` | `str | None` | Why overage is unavailable, if status is `"rejected"` |
+| `raw` | `dict[str, Any]` | Full raw dict from the CLI, including fields not modeled above |
 
 ### `TaskStartedMessage`
 
@@ -329,7 +336,8 @@ class TaskStartedMessage(SystemMessage):
 | `description` | `str` | Description of the task |
 | `uuid` | `str` | Unique message identifier |
 | `session_id` | `str` | Session identifier |
-| `tool_use_id` | `str | None` |
+| `tool_use_id` | `str | None` | Associated tool use ID |
+| `task_type` | `str | None` | Which kind of background task: `"local_bash"`, `"local_agent"`, `"remote_agent"` |
 
 ### `TaskUsage`
 
@@ -372,7 +380,9 @@ class TaskProgressMessage(SystemMessage):
 | `description` | `str` | Current status description |
 | `usage` | `TaskUsage` | Token usage for this task so far |
 | `uuid` | `str` | Unique message identifier |
-| `session_id` | `str` |
+| `session_id` | `str` | Session identifier |
+| `tool_use_id` | `str | None` | Associated tool use ID |
+| `last_tool_name` | `str | None` | Name of the last tool the task used |
 
 ### `TaskNotificationMessage`
 
@@ -402,7 +412,10 @@ class TaskNotificationMessage(SystemMessage):
 | `status` | `TaskNotificationStatus` | One of `"completed"`, `"failed"`, or `"stopped"` |
 | `output_file` | `str` | Path to the task output file |
 | `summary` | `str` | Summary of the task result |
-|
+| `uuid` | `str` | Unique message identifier |
+| `session_id` | `str` | Session identifier |
+| `tool_use_id` | `str | None` | Associated tool use ID |
+| `usage` | `TaskUsage | None` | Final token usage for the task |
 
 ## Content Block Types
 

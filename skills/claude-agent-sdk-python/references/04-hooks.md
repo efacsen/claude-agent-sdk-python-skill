@@ -1,6 +1,6 @@
 ---
 source_url: https://platform.claude.com/docs/en/agent-sdk/python
-last_fetched: 2026-04-08T21:21:24.875141+00:00
+last_fetched: 2026-04-08T22:27:41.828227+00:00
 topic: 04-hooks
 ---
 
@@ -163,7 +163,8 @@ class PreToolUseHookInput(BaseHookInput):
 | `tool_name` | `str` | Name of the tool about to be executed |
 | `tool_input` | `dict[str, Any]` | Input parameters for the tool |
 | `tool_use_id` | `str` | Unique identifier for this tool use |
-| `agent_id` | `str` (optional) |
+| `agent_id` | `str` (optional) | Subagent identifier, present when the hook fires inside a subagent |
+| `agent_type` | `str` (optional) | Subagent type, present when the hook fires inside a subagent |
 
 ### `PostToolUseHookInput`
 
@@ -191,7 +192,9 @@ class PostToolUseHookInput(BaseHookInput):
 | `tool_name` | `str` | Name of the tool that was executed |
 | `tool_input` | `dict[str, Any]` | Input parameters that were used |
 | `tool_response` | `Any` | Response from the tool execution |
-| `tool_use_id` | `str` |
+| `tool_use_id` | `str` | Unique identifier for this tool use |
+| `agent_id` | `str` (optional) | Subagent identifier, present when the hook fires inside a subagent |
+| `agent_type` | `str` (optional) | Subagent type, present when the hook fires inside a subagent |
 
 ### `PostToolUseFailureHookInput`
 
@@ -220,7 +223,10 @@ class PostToolUseFailureHookInput(BaseHookInput):
 | `tool_name` | `str` | Name of the tool that failed |
 | `tool_input` | `dict[str, Any]` | Input parameters that were used |
 | `tool_use_id` | `str` | Unique identifier for this tool use |
-| `error` | `str` |
+| `error` | `str` | Error message from the failed execution |
+| `is_interrupt` | `bool` (optional) | Whether the failure was caused by an interrupt |
+| `agent_id` | `str` (optional) | Subagent identifier, present when the hook fires inside a subagent |
+| `agent_type` | `str` (optional) | Subagent type, present when the hook fires inside a subagent |
 
 ### `UserPromptSubmitHookInput`
 
@@ -286,7 +292,7 @@ class SubagentStopHookInput(BaseHookInput):
 | `stop_hook_active` | `bool` | Whether the stop hook is active |
 | `agent_id` | `str` | Unique identifier for the subagent |
 | `agent_transcript_path` | `str` | Path to the subagent's transcript file |
-| `agent_type` | `str` |
+| `agent_type` | `str` | Type of the subagent |
 
 ### `PreCompactHookInput`
 

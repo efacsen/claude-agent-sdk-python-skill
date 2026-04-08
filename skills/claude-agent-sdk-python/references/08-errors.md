@@ -1,6 +1,6 @@
 ---
 source_url: https://platform.claude.com/docs/en/agent-sdk/python
-last_fetched: 2026-04-08T21:21:24.875141+00:00
+last_fetched: 2026-04-08T22:27:41.828227+00:00
 topic: 08-errors
 ---
 

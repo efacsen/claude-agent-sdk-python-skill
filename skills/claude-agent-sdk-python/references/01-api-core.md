@@ -1,6 +1,6 @@
 ---
 source_url: https://platform.claude.com/docs/en/agent-sdk/python
-last_fetched: 2026-04-08T21:21:25.328169+00:00
+last_fetched: 2026-04-08T22:27:41.828227+00:00
 topic: 01-api-core
 ---
 
@@ -161,6 +161,14 @@ class ClaudeSDKClient:
 | `receive_response()` | Receive messages until and including a ResultMessage |
 | `interrupt()` | Send interrupt signal (only works in streaming mode) |
 | `set_permission_mode(mode)` | Change the permission mode for the current session |
+| `set_model(model)` | Change the model for the current session. Pass `None` to reset to default |
+| `rewind_files(user_message_id)` | Restore files to their state at the specified user message. Requires `enable_file_checkpointing=True`. See [File checkpointing](/docs/en/agent-sdk/file-checkpointing) |
+| `get_mcp_status()` | Get the status of all configured MCP servers. Returns [`McpStatusResponse`](#mcp-status-response) |
+| `reconnect_mcp_server(server_name)` | Retry connecting to an MCP server that failed or was disconnected |
+| `toggle_mcp_server(server_name, enabled)` | Enable or disable an MCP server mid-session. Disabling removes its tools |
+| `stop_task(task_id)` | Stop a running background task. A [`TaskNotificationMessage`](#task-notification-message) with status `"stopped"` follows in the message stream |
+| `get_server_info()` | Get server information including session ID and capabilities |
+| `disconnect()` | Disconnect from Claude |
 
 
 #### Context Manager Support

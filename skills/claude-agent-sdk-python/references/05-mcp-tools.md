@@ -1,6 +1,6 @@
 ---
 source_url: https://platform.claude.com/docs/en/agent-sdk/python
-last_fetched: 2026-04-08T21:21:24.875141+00:00
+last_fetched: 2026-04-08T22:27:41.828227+00:00
 topic: 05-mcp-tools
 ---
 
@@ -93,7 +93,9 @@ Re-exported from `mcp.types` (also available as `from claude_agent_sdk import To
 | --- | --- | --- | --- |
 | `title` | `str | None` | `None` | Human-readable title for the tool |
 | `readOnlyHint` | `bool | None` | `False` | If `True`, the tool does not modify its environment |
-| `destructiveHint` | `bool | None` | `True` | If `True`, the tool may perform destructive updates (only meaningful when  is ) |
+| `destructiveHint` | `bool | None` | `True` | If `True`, the tool may perform destructive updates (only meaningful when `readOnlyHint` is `False`) |
+| `idempotentHint` | `bool | None` | `False` | If `True`, repeated calls with the same arguments have no additional effect (only meaningful when `readOnlyHint` is `False`) |
+| `openWorldHint` | `bool | None` | `True` | If `True`, the tool interacts with external entities (for example, web search). If `False`, the tool's domain is closed (for example, a memory tool) |
 
 
 
@@ -203,7 +205,7 @@ class SdkMcpTool(Generic[T]):
 | `description` | `str` | Human-readable description |
 | `input_schema` | `type[T] | dict[str, Any]` | Schema for input validation |
 | `handler` | `Callable[[T], Awaitable[dict[str, Any]]]` | Async function that handles tool execution |
-| `annotations` | `ToolAnnotations | None` |
+| `annotations` | `ToolAnnotations | None` | Optional MCP tool annotations (e.g., `readOnlyHint`, `destructiveHint`, `openWorldHint`). From `mcp.types` |
 
 ### `McpSdkServerConfig`
 

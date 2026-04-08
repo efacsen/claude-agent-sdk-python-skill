@@ -1,6 +1,6 @@
 ---
 source_url: https://platform.claude.com/docs/en/agent-sdk/python
-last_fetched: 2026-04-08T21:21:24.875141+00:00
+last_fetched: 2026-04-08T22:27:41.828227+00:00
 topic: 06-permissions
 ---
 
@@ -157,7 +157,8 @@ class PermissionUpdate:
 | `rules` | `list[PermissionRuleValue] | None` | Rules for add/replace/remove operations |
 | `behavior` | `Literal["allow", "deny", "ask"] | None` | Behavior for rule-based operations |
 | `mode` | `PermissionMode | None` | Mode for setMode operation |
-| `directories` |  |
+| `directories` | `list[str] | None` | Directories for add/remove directory operations |
+| `destination` | `Literal[...] | None` | Where to apply the permission update |
 
 ### `PermissionRuleValue`
 

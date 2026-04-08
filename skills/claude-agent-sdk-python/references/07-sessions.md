@@ -1,6 +1,6 @@
 ---
 source_url: https://platform.claude.com/docs/en/agent-sdk/python
-last_fetched: 2026-04-08T21:21:24.875141+00:00
+last_fetched: 2026-04-08T22:27:41.828227+00:00
 topic: 07-sessions
 ---
 
@@ -44,7 +44,12 @@ def list_sessions(
 | `summary` | `str` | Display title: custom title, auto-generated summary, or first prompt |
 | `last_modified` | `int` | Last modified time in milliseconds since epoch |
 | `file_size` | `int | None` | Session file size in bytes (`None` for remote storage backends) |
-| `custom_title` |
+| `custom_title` | `str | None` | User-set session title |
+| `first_prompt` | `str | None` | First meaningful user prompt in the session |
+| `git_branch` | `str | None` | Git branch at the end of the session |
+| `cwd` | `str | None` | Working directory for the session |
+| `tag` | `str | None` | User-set session tag (see [`tag_session()`](#tag-session)) |
+| `created_at` | `int | None` | Session creation time in milliseconds since epoch |
 
 
 #### Example
@@ -89,7 +94,7 @@ def get_session_messages(
 | `session_id` | `str` | required | The session ID to retrieve messages for |
 | `directory` | `str | None` | `None` | Project directory to look in. When omitted, searches all projects |
 | `limit` | `int | None` | `None` | Maximum number of messages to return |
-| `offset` |  |
+| `offset` | `int` | `0` | Number of messages to skip from the start |
 
 
 #### Return type: `SessionMessage`
@@ -103,7 +108,7 @@ def get_session_messages(
 | `uuid` | `str` | Unique message identifier |
 | `session_id` | `str` | Session identifier |
 | `message` | `Any` | Raw message content |
-| `parent_tool_use_id` | `None` |
+| `parent_tool_use_id` | `None` | Reserved for future use |
 
 
 #### Example
