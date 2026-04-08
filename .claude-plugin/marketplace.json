@@ -1,0 +1,14 @@
+{
+  "name": "agent-sdk-py",
+  "owner": {
+    "name": "efacsen"
+  },
+  "plugins": [
+    {
+      "name": "claude-agent-sdk-python-skill",
+      "source": ".",
+      "description": "Expert coach for the Python Claude Agent SDK. Generates idiomatic code, audits existing agents, and keeps docs fresh.",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -9,14 +9,18 @@ A Claude Code plugin that makes Claude an expert coach for the **Python Claude A
 
 ## Install
 
+Claude Code installs plugins from marketplaces. This repo ships its own single-plugin marketplace named `agent-sdk-py`:
+
 ```bash
-/plugin install efacsen/claude-agent-sdk-python-skill
+/plugin marketplace add efacsen/claude-agent-sdk-python-skill
+/plugin install claude-agent-sdk-python-skill@agent-sdk-py
 ```
 
 Update later with:
 
 ```bash
-/plugin update efacsen/claude-agent-sdk-python-skill
+/plugin marketplace update agent-sdk-py
+/plugin update claude-agent-sdk-python-skill@agent-sdk-py
 ```
 
 ## Commands
