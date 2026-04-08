@@ -1,0 +1,53 @@
+{
+  "version": "1",
+  "files": [
+    {
+      "file": "01-api-core.md",
+      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "section_anchors": ["Choosing between", "query()", "ClaudeSDKClient"],
+      "last_fetched": null
+    },
+    {
+      "file": "02-options.md",
+      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "section_anchors": ["ClaudeAgentOptions"],
+      "last_fetched": null
+    },
+    {
+      "file": "03-messages.md",
+      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "section_anchors": ["Message Types", "Content Block"],
+      "last_fetched": null
+    },
+    {
+      "file": "04-hooks.md",
+      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "section_anchors": ["HookMatcher", "Hook Events", "PreToolUse", "PostToolUse"],
+      "last_fetched": null
+    },
+    {
+      "file": "05-mcp-tools.md",
+      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "section_anchors": ["@tool", "create_sdk_mcp_server"],
+      "last_fetched": null
+    },
+    {
+      "file": "06-permissions.md",
+      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "section_anchors": ["Permission Mode", "allowed_tools", "can_use_tool"],
+      "last_fetched": null
+    },
+    {
+      "file": "07-sessions.md",
+      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "section_anchors": ["resume", "continue_conversation", "fork_session", "session_id"],
+      "last_fetched": null
+    },
+    {
+      "file": "08-errors.md",
+      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "section_anchors": ["Error Types", "ClaudeSDKError", "CLINotFoundError"],
+      "last_fetched": null
+    }
+  ]
+}
