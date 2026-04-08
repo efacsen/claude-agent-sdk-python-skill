@@ -1,0 +1,7 @@
+{
+  "name": "claude-agent-sdk-python-skill",
+  "version": "0.1.0",
+  "description": "Expert coach for the Python Claude Agent SDK. Generates idiomatic code, audits existing agents, and keeps docs fresh.",
+  "author": {"name": "Kevin Zakaria"},
+  "homepage": "https://github.com/efacsen/claude-agent-sdk-python-skill"
+}
