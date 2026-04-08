@@ -67,33 +67,85 @@ def html_to_markdown(html: str) -> str:
     return markdownify(html, heading_style="ATX", code_language="python")
 
 
-def split_by_h2(markdown: str) -> dict[str, str]:
-    """Split markdown into sections keyed by H2 heading text."""
-    sections: dict[str, str] = {}
-    current_key = "_preamble"
+@dataclass
+class Section:
+    level: int  # 2 or 3
+    heading: str
+    body: str
+
+
+def split_by_h2(markdown: str) -> list[Section]:
+    """Split markdown into an ordered list of sections at H2 and H3 boundaries.
+
+    The Python Agent SDK reference groups API names (query, ClaudeAgentOptions,
+    HookMatcher, PreToolUse, ...) under H3s inside H2 category containers
+    ("Functions", "Classes", "Hook Types", ...). We need both levels as
+    addressable sections, AND we need to preserve their order so that matching
+    an H2 can also pull in its H3 children via match_entry.
+    """
+    sections: list[Section] = []
+    current_level = 0
+    current_heading = "_preamble"
     buffer: list[str] = []
+
+    def flush():
+        if buffer:
+            sections.append(
+                Section(level=current_level, heading=current_heading, body="\n".join(buffer).strip())
+            )
+
     for line in markdown.splitlines():
         if line.startswith("## "):
-            if buffer:
-                sections[current_key] = "\n".join(buffer).strip()
-            current_key = line[3:].strip()
+            flush()
+            current_level = 2
+            current_heading = line[3:].strip()
+            buffer = [line]
+        elif line.startswith("### "):
+            flush()
+            current_level = 3
+            current_heading = line[4:].strip()
             buffer = [line]
         else:
             buffer.append(line)
-    if buffer:
-        sections[current_key] = "\n".join(buffer).strip()
+    flush()
     return sections
 
 
-def match_entry(entry: SourceEntry, sections: dict[str, str]) -> str:
-    """Pick the sections whose headings contain any of the entry's anchors."""
-    matched: list[str] = []
-    for heading, body in sections.items():
-        for anchor in entry.section_anchors:
-            if anchor.lower() in heading.lower():
-                matched.append(body)
-                break
-    return "\n\n".join(matched).strip()
+def _anchor_matches(anchor: str, heading: str) -> bool:
+    # Strip backticks and common punctuation so "query()" matches "`query()`"
+    needle = anchor.lower().strip("` ")
+    hay = heading.lower()
+    return needle in hay
+
+
+def match_entry(entry: SourceEntry, sections: list[Section]) -> str:
+    """Pick sections whose headings contain any of the entry's anchors.
+
+    When an H2 matches, also include every following H3 section up until the
+    next H2. This gives us the full "category" block (e.g. matching "Hook Types"
+    pulls in HookMatcher, HookContext, HookCallback, etc.).
+
+    Dedupes by heading so an entry listing both an H2 and one of its H3
+    children doesn't include the child twice.
+    """
+    matched: list[Section] = []
+    seen: set[str] = set()
+    for i, section in enumerate(sections):
+        if not any(_anchor_matches(a, section.heading) for a in entry.section_anchors):
+            continue
+        if section.heading in seen:
+            continue
+        matched.append(section)
+        seen.add(section.heading)
+        # If this is an H2, also grab all the H3s under it
+        if section.level == 2:
+            j = i + 1
+            while j < len(sections) and sections[j].level > 2:
+                if sections[j].heading not in seen:
+                    matched.append(sections[j])
+                    seen.add(sections[j].heading)
+                j += 1
+    return "\n\n".join(s.body for s in matched).strip()
 
 
 def build_reference_file(entry: SourceEntry, body: str, now: str) -> str:
