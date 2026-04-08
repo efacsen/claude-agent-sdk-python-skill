@@ -1,5 +1,5 @@
 [tool.pytest.ini_options]
-testpaths = ["dev/tests"]
+testpaths = ["tests"]
 python_files = ["test_*.py"]
 addopts = "-q"
 asyncio_mode = "auto"

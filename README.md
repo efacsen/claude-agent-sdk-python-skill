@@ -43,20 +43,12 @@ Update later with:
 commands/         four slash command definitions
 skills/           SKILL.md routing brain + references + checklists + templates
 scripts/          refresh_docs.py (docs snapshot refresher)
-dev/              dev-only artifacts: plans, specs, tests, fixtures
+tests/            pytest suite + acceptance suite + fixtures
 ```
 
-Runtime (`skills/`, `commands/`, `scripts/`, `.claude-plugin/`) is what the plugin loads. Everything under `dev/` is for contributors.
+## Contributing
 
-## Development
-
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r scripts/requirements.txt claude-agent-sdk pytest pytest-asyncio
-pytest
-```
-
-Tests live in `dev/tests/` and are discovered via `pyproject.toml`.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, how to run tests, and how to refresh the docs snapshot.
 
 ## License
 

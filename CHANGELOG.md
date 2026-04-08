@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+- Removed sedimentary development artifacts (initial implementation plan, design spec) that had already drifted from the code
+- Added `CONTRIBUTING.md` with dev setup, test instructions, and docs refresh workflow
+
 ## [0.1.0] - 2026-04-09
 
 Initial release.
@@ -17,6 +23,7 @@ Initial release.
 - Curated reference snapshots of the Python Agent SDK docs under `skills/claude-agent-sdk-python/references/` (8 topic files with YAML frontmatter)
 - `scripts/refresh_docs.py` — deterministic docs refresher that fetches the live reference, splits by H2/H3 headings, and atomic-writes topic files
 - Single-plugin marketplace at `.claude-plugin/marketplace.json` for `/plugin marketplace add efacsen/claude-agent-sdk-python-skill`
-- Dev-only artifacts archived under `dev/`: plans, specs, pytest suite (16 tests), manual acceptance suite, fixtures
+- `pytest` suite under `tests/` (16 tests) + manual acceptance suite
 
+[Unreleased]: https://github.com/efacsen/claude-agent-sdk-python-skill/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/efacsen/claude-agent-sdk-python-skill/releases/tag/v0.1.0

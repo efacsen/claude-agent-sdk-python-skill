@@ -45,7 +45,7 @@ Run each test in a Claude Code session with this plugin installed. Check that th
 
 **Invoke:**
 ```
-/agent-sdk:audit dev/tests/fixtures/bad_agent.py
+/agent-sdk:audit tests/fixtures/bad_agent.py
 ```
 
 **Expect:**
@@ -113,7 +113,7 @@ Run each test in a Claude Code session with this plugin installed. Check that th
 
 **Invoke:**
 ```
-/agent-sdk:audit dev/tests/fixtures/anthropic_client_sample.py
+/agent-sdk:audit tests/fixtures/anthropic_client_sample.py
 ```
 
 (Create a throwaway file with `from anthropic import Anthropic; client.messages.create(...)`.)
