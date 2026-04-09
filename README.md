@@ -1,5 +1,7 @@
 # claude-agent-sdk-python-skill
 
+[![License: MIT](https://img.shields.io/github/license/efacsen/claude-agent-sdk-python-skill?style=flat-square&color=blue)](./LICENSE) [![Release](https://img.shields.io/github/v/tag/efacsen/claude-agent-sdk-python-skill?style=flat-square&label=release&color=brightgreen)](https://github.com/efacsen/claude-agent-sdk-python-skill/releases) [![Stars](https://img.shields.io/github/stars/efacsen/claude-agent-sdk-python-skill?style=flat-square)](https://github.com/efacsen/claude-agent-sdk-python-skill/stargazers)
+
 A Claude Code plugin that makes Claude an expert coach for the **Python Claude Agent SDK** (`claude_agent_sdk`). It:
 
 - Generates idiomatic SDK code from your use case
