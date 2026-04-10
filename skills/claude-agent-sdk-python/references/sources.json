@@ -3,7 +3,7 @@
   "files": [
     {
       "file": "01-api-core.md",
-      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "source_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "section_anchors": [
         "Choosing between",
         "When to use",
@@ -14,7 +14,7 @@
     },
     {
       "file": "02-options.md",
-      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "source_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "section_anchors": [
         "ClaudeAgentOptions",
         "AgentDefinition",
@@ -26,7 +26,7 @@
     },
     {
       "file": "03-messages.md",
-      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "source_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "section_anchors": [
         "Message Types",
         "Content Block",
@@ -39,7 +39,7 @@
     },
     {
       "file": "04-hooks.md",
-      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "source_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "section_anchors": [
         "Hook Types",
         "HookMatcher",
@@ -57,7 +57,7 @@
     },
     {
       "file": "05-mcp-tools.md",
-      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "source_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "section_anchors": [
         "tool()",
         "create_sdk_mcp_server",
@@ -70,7 +70,7 @@
     },
     {
       "file": "06-permissions.md",
-      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "source_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "section_anchors": [
         "PermissionMode",
         "PermissionResult",
@@ -84,7 +84,7 @@
     },
     {
       "file": "07-sessions.md",
-      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "source_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "section_anchors": [
         "list_sessions",
         "get_session_messages",
@@ -97,7 +97,7 @@
     },
     {
       "file": "08-errors.md",
-      "source_url": "https://platform.claude.com/docs/en/agent-sdk/python",
+      "source_url": "https://code.claude.com/docs/en/agent-sdk/python",
       "section_anchors": [
         "Error Types",
         "ClaudeSDKError",

@@ -13,7 +13,7 @@ Steps:
 3. Include a code example if the snapshot has one.
 4. Include the `last_fetched` date from the reference file's frontmatter so the user knows how fresh the answer is.
 5. If the topic isn't covered by the snapshot:
-   - `WebFetch` `https://platform.claude.com/docs/en/agent-sdk/python`
+   - `WebFetch` `https://code.claude.com/docs/en/agent-sdk/python`
    - Answer from the live content
    - Tell the user: "Your snapshot doesn't cover this topic — consider running `/agent-sdk:refresh`."
 

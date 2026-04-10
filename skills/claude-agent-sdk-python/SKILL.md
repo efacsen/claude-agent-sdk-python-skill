@@ -91,7 +91,7 @@ On every invocation, read `references/sources.json`. For each entry, compare `la
 
 Never block on this. Never auto-refresh. Never silently trust training data — always consult the snapshot or `WebFetch` the live doc.
 
-If the user's specific question isn't answered by the snapshot, `WebFetch` `https://platform.claude.com/docs/en/agent-sdk/python`, answer from the live content, and tell the user the snapshot is missing the topic.
+If the user's specific question isn't answered by the snapshot, `WebFetch` `https://code.claude.com/docs/en/agent-sdk/python`, answer from the live content, and tell the user the snapshot is missing the topic.
 
 ## Hard rules (never violate)
 

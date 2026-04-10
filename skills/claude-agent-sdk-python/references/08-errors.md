@@ -1,5 +1,5 @@
 ---
-source_url: https://platform.claude.com/docs/en/agent-sdk/python
+source_url: https://code.claude.com/docs/en/agent-sdk/python
 last_fetched: 2026-04-08T23:13:02.414543+00:00
 topic: 08-errors
 ---
